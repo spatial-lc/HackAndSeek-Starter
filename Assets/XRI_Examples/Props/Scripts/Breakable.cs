@@ -23,6 +23,9 @@ namespace UnityEngine.XR.Content.Interaction
             "The first parameter is the colliding object, the second parameter is the 'broken' version.")]
         BreakEvent m_OnBreak = new BreakEvent();
 
+        
+     
+
         bool m_Destroyed = false;
 
         /// <summary>
@@ -41,6 +44,7 @@ namespace UnityEngine.XR.Content.Interaction
                 m_Destroyed = true;
                 var brokenVersion = Instantiate(m_BrokenVersion, transform.position, transform.rotation);
                 m_OnBreak.Invoke(collision.gameObject, brokenVersion);
+             
                 Destroy(gameObject);
             }
         }

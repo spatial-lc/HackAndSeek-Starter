@@ -45,6 +45,8 @@ namespace UnityEngine.XR.Content.Interaction
         /// </summary>
         public RestoreEvent onRestore => m_OnRestore;
 
+      
+
         void Start()
         {
             // Go through all children
@@ -61,7 +63,7 @@ namespace UnityEngine.XR.Content.Interaction
         {
             if (m_Restored)
                 return;
-
+            
             // Phase 1 - wait to rewind
             // Phase 2 - rewind all positions, using a an inverse quadratic curve
             // Phase 3 - replace object, destroy this one
