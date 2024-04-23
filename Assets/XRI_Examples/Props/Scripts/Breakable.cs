@@ -24,6 +24,10 @@ namespace UnityEngine.XR.Content.Interaction
         BreakEvent m_OnBreak = new BreakEvent();
 
         
+        AudioSource m_audioSource;
+
+        [SerializeField]
+        AudioClip m_clip;
      
 
         bool m_Destroyed = false;
@@ -44,7 +48,8 @@ namespace UnityEngine.XR.Content.Interaction
                 m_Destroyed = true;
                 var brokenVersion = Instantiate(m_BrokenVersion, transform.position, transform.rotation);
                 m_OnBreak.Invoke(collision.gameObject, brokenVersion);
-             
+             m_audioSource = collision.gameObject.GetComponent<AudioSource>();
+                m_audioSource.PlayOneShot(m_clip);
                 Destroy(gameObject);
             }
         }
